@@ -1,15 +1,15 @@
 package com.hyun6ik.membershipservice.domain
 
 class Membership private constructor(
-    val membershipId: String,
+    val membershipId: Long,
     val name: String,
     val email: String,
     val address: String,
     val isValid: Boolean,
-    val aggregateIdentifier: String
+    val isCorp: Boolean,
 ) {
     companion object {
-        fun generateMember(
+        fun create(
             membershipId: MembershipId,
             membershipName: MembershipName,
             membershipEmail: MembershipEmail,
@@ -22,11 +22,11 @@ class Membership private constructor(
             membershipEmail.emailValue,
             membershipAddress.addressValue,
             membershipIsValid.isValidValue,
-            membershipIsCorp.isCorp,
+            membershipIsCorp.isCorpValue,
         )
     }
 
-    data class MembershipId(val membershipId: String)
+    data class MembershipId(val membershipId: Long)
 
     data class MembershipName(val nameValue: String)
 
@@ -36,5 +36,5 @@ class Membership private constructor(
 
     data class MembershipIsValid(val isValidValue: Boolean)
 
-    data class MembershipIsCorp(val isCorp: String)
+    data class MembershipIsCorp(val isCorpValue: Boolean)
 }
